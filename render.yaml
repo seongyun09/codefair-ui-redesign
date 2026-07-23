@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: codefair-vector-uploader
+    name: codefair-ui-redesign
     runtime: python
     plan: free
     buildCommand: pip install -r requirements.txt
