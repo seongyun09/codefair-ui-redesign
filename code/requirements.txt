@@ -1,0 +1,5 @@
+flask>=3.0
+
+# 실제 AI API를 연결할 때만 필요 (선택)
+# anthropic>=0.40
+# openai>=1.50

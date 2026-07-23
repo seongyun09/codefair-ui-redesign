@@ -1,0 +1,20 @@
+services:
+  - type: web
+    name: codefair-vector-uploader
+    runtime: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn insurance_rag.api:app --app-dir src --host 0.0.0.0 --port $PORT
+    healthCheckPath: /health
+    autoDeploy: true
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.8
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: OPENAI_VECTOR_STORE_ID
+        sync: false
+      - key: UPLOAD_PASSWORD
+        sync: false
+      - key: INSURANCE_RESPONSE_CACHE_TTL_SECONDS
+        value: 900
