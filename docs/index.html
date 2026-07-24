@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>C.V · AI 답변 검증</title>
   <meta name="description" content="여러 AI의 판단 차이를 보여줘 사용자가 더 신중하게 판단하도록 돕습니다.">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%236d5df6' d='M12 2c.6 4.8 3.2 7.4 8 8-4.8.6-7.4 3.2-8 8-.6-4.8-3.2-7.4-8-8 4.8-.6 7.4-3.2 8-8z'/%3E%3C/svg%3E">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Ccircle cx='9' cy='12' r='7' fill='%234e8cff' fill-opacity='.85'/%3E%3Ccircle cx='15' cy='12' r='7' fill='%23c65cf6' fill-opacity='.85' style='mix-blend-mode:multiply'/%3E%3C/svg%3E">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css">
   <link rel="stylesheet" href="static/style.css">
 </head>
@@ -13,10 +13,15 @@
   <div class="app">
     <aside class="sidebar" id="sidebar" aria-label="대화 목록">
       <div class="sidebar-head">
-        <div class="brand"><span class="brand-name">대화</span></div>
+        <span class="spark" aria-hidden="true">
+          <svg viewBox="0 0 24 24">
+            <circle class="spark-a" cx="9" cy="12" r="7"/>
+            <circle class="spark-b" cx="15" cy="12" r="7"/>
+          </svg>
+        </span>
         <button class="icon-btn mobile-only" id="sidebarClose" aria-label="대화 목록 닫기">✕</button>
       </div>
-      <button class="new-chat-btn" id="newChatBtn">＋ 새 대화</button>
+      <button class="new-chat-btn" id="newChatBtn"><span class="ic-pencil" aria-hidden="true">✎</span> 새 대화</button>
       <div class="chat-list-label">현재 세션</div>
       <div class="chat-list" id="chatList"></div>
     </aside>
@@ -27,7 +32,10 @@
       <div class="brand">
         <button class="icon-btn mobile-only" id="sidebarOpen" aria-label="대화 목록 열기">☰</button>
         <span class="spark" aria-hidden="true">
-          <svg viewBox="0 0 24 24"><path d="M12 2c.6 4.8 3.2 7.4 8 8-4.8.6-7.4 3.2-8 8-.6-4.8-3.2-7.4-8-8 4.8-.6 7.4-3.2 8-8z"/></svg>
+          <svg viewBox="0 0 24 24">
+            <circle class="spark-a" cx="9" cy="12" r="7"/>
+            <circle class="spark-b" cx="15" cy="12" r="7"/>
+          </svg>
         </span>
         <span class="brand-name">C.V</span>
       </div>
@@ -41,8 +49,8 @@
       <div class="empty-state" id="emptyState">
         <div class="big-spark" aria-hidden="true">
           <svg viewBox="0 0 24 24">
-            <defs><linearGradient id="sparkGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4E8CFF"/><stop offset="0.55" stop-color="#8A5CF6"/><stop offset="1" stop-color="#C65CF6"/></linearGradient></defs>
-            <path fill="url(#sparkGrad)" d="M12 2c.6 4.8 3.2 7.4 8 8-4.8.6-7.4 3.2-8 8-.6-4.8-3.2-7.4-8-8 4.8-.6 7.4-3.2 8-8z"/>
+            <circle class="spark-a" cx="9" cy="12" r="7"/>
+            <circle class="spark-b" cx="15" cy="12" r="7"/>
           </svg>
         </div>
         <p class="service-name">AI 답변 검증 도구 · C.V</p>

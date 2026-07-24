@@ -132,7 +132,7 @@
     messages.insertAdjacentHTML(
       "beforeend",
       `<article class="msg assistant analysis-loading" id="${loadingId}">
-        <span class="msg-spark thinking">✦</span>
+        <span class="msg-spark thinking"></span>
         <div class="progress-panel">
           <strong>보험 약관을 분석하고 있습니다</strong>
           <ol>${progressSteps.map((step, index) =>
@@ -171,7 +171,7 @@
     if (!sources?.length) return "";
     const sourceId = crypto.randomUUID();
     sourceRegistry.set(sourceId, sources);
-    return `<button class="inline-action source-action" data-source-id="${sourceId}">▤ 근거 보기 (${sources.length})</button>`;
+    return `<button class="inline-action source-action" data-source-id="${sourceId}">근거 보기 (${sources.length})</button>`;
   }
 
   function renderSubAnswers(subAnswers) {
@@ -256,7 +256,7 @@
     const disagreements = result.disagreements || [];
     messages.insertAdjacentHTML("beforeend", `
       <article class="msg assistant result-card" id="message-${messageId}" data-question="${escapeHtml(question)}">
-        <span class="msg-spark">✦</span>
+        <span class="msg-spark"></span>
         <div class="msg-body">
           <div class="result-meta">
             <span class="status-pill ${escapeHtml(result.status)}">${escapeHtml(statusLabel(result.status))}</span>

@@ -92,7 +92,17 @@ button {
   display: flex;
   flex-direction: column;
   min-width: 0;
-  background: var(--bg);
+  background:
+    radial-gradient(760px 480px at 50% 8%, rgba(138, 92, 246, 0.09), transparent 65%),
+    radial-gradient(620px 420px at 82% 2%, rgba(78, 140, 255, 0.07), transparent 60%),
+    var(--bg);
+}
+
+[data-theme="dark"] .main {
+  background:
+    radial-gradient(760px 480px at 50% 8%, rgba(138, 92, 246, 0.14), transparent 65%),
+    radial-gradient(620px 420px at 82% 2%, rgba(78, 140, 255, 0.1), transparent 60%),
+    var(--bg);
 }
 
 /* ───────── 사이드바 ───────── */
@@ -129,37 +139,37 @@ button {
   height: 24px;
   display: grid;
   place-items: center;
-  border-radius: 8px;
-  background: var(--accent-grad);
-  box-shadow: 0 3px 10px rgba(110, 92, 246, 0.32);
 }
 
-.spark svg {
-  width: 14px;
-  height: 14px;
-  fill: #fff;
-}
+.spark svg { width: 22px; height: 22px; }
+.spark .spark-a { fill: #4e8cff; fill-opacity: .85; }
+.spark .spark-b { fill: #c65cf6; fill-opacity: .85; mix-blend-mode: multiply; }
+[data-theme="dark"] .spark .spark-b { mix-blend-mode: screen; }
 
 .new-chat-btn {
   display: flex;
   align-items: center;
-  gap: 8px;
-  padding: 9px 12px;
+  gap: 10px;
+  padding: 9px 10px;
   border-radius: 10px;
   background: transparent;
-  border: 1px solid var(--border);
+  border: none;
   font-size: 13.5px;
-  font-weight: 550;
+  font-weight: 500;
   color: var(--text);
-  transition: background 0.12s ease, border-color 0.12s ease;
+  transition: background 0.12s ease;
 }
 
 .new-chat-btn svg { width: 14px; height: 14px; }
-
-.new-chat-btn:hover {
-  background: var(--surface);
-  border-color: var(--border-strong);
+.new-chat-btn .ic-pencil {
+  display: grid;
+  place-items: center;
+  width: 18px;
+  font-size: 14px;
+  color: var(--text-2);
 }
+
+.new-chat-btn:hover { background: var(--surface-2); }
 
 .chat-list-label {
   font-size: 11px;
@@ -404,6 +414,22 @@ button {
   color: var(--text);
   background: var(--surface-2);
 }
+.source-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-full);
+  background: var(--surface);
+}
+.source-action::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent-grad);
+}
+.source-action:hover { border-color: var(--border-strong); }
 .follow-ups {
   display: flex;
   flex-wrap: wrap;
@@ -617,6 +643,9 @@ button {
 }
 
 .big-spark svg { width: 100%; height: 100%; }
+.big-spark .spark-a { fill: #4e8cff; fill-opacity: .85; }
+.big-spark .spark-b { fill: #c65cf6; fill-opacity: .85; mix-blend-mode: multiply; }
+[data-theme="dark"] .big-spark .spark-b { mix-blend-mode: screen; }
 
 @keyframes breathe {
   0%, 100% { transform: scale(1); filter: drop-shadow(0 0 0 rgba(138, 92, 246, 0)); }
@@ -624,9 +653,9 @@ button {
 }
 
 .greeting {
-  font-size: 27px;
-  font-weight: 650;
-  letter-spacing: -0.025em;
+  font-size: 31px;
+  font-weight: 520;
+  letter-spacing: -0.02em;
   margin: 0 0 9px;
 }
 
@@ -710,21 +739,25 @@ button {
   word-break: break-word;
 }
 
-/* 어시스턴트: 스파크 아이콘 + 플레인 텍스트 (아바타 원형 배경 없음) */
+/* 어시스턴트: 겹친 원 두 개 아이콘 + 플레인 텍스트 (아바타 원형 배경 없음) */
 .msg-spark {
+  position: relative;
   flex-shrink: 0;
-  width: 19px;
-  height: 19px;
-  margin-top: 3px;
-  display: grid;
-  place-items: center;
-  font-size: 16px;
-  line-height: 1;
-  background: var(--accent-grad);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  width: 18px;
+  height: 15px;
+  margin-top: 4px;
 }
+.msg-spark::before, .msg-spark::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+.msg-spark::before { left: 0; background: #4e8cff; opacity: .85; }
+.msg-spark::after { left: 6px; background: #c65cf6; opacity: .85; mix-blend-mode: multiply; }
+[data-theme="dark"] .msg-spark::after { mix-blend-mode: screen; }
 
 .msg-spark.thinking { animation: pulse 1.2s ease-in-out infinite; }
 
