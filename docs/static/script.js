@@ -30,6 +30,19 @@
     .replace(/>/g, "&gt;")
     .replace(/"/g, "&quot;");
 
+  function formatAnswerText(text) {
+    const lines = String(text ?? "").split("\n").map((line) => line.trim()).filter(Boolean);
+    return lines.map((line) => {
+      if (/^\d+\.\s+.+/.test(line)) {
+        return `<p class="answer-heading">${escapeHtml(line)}</p>`;
+      }
+      if (/^[-•]\s+/.test(line)) {
+        return `<p class="answer-bullet">${escapeHtml(line.replace(/^[-•]\s+/, ""))}</p>`;
+      }
+      return `<p class="answer-line">${escapeHtml(line)}</p>`;
+    }).join("");
+  }
+
   const progressSteps = ["질문 분석", "약관 검색", "근거 검증", "답변 작성"];
 
   function setBusy(busy) {
@@ -185,7 +198,7 @@
             <span>합의도 ${escapeHtml(item.model_agreement || "확인 불가")}</span>
           </div>
           <h3>${escapeHtml(item.question)}</h3>
-          <p>${escapeHtml(item.answer || "답변을 생성하지 못했습니다.")}</p>
+          <div class="answer-text">${formatAnswerText(item.answer || "답변을 생성하지 못했습니다.")}</div>
           ${registerSources(item.sources)}
         </section>
       `).join("")}
@@ -285,7 +298,7 @@
           </section>
           <section class="final-summary">
             <p class="eyebrow">최종 정리</p>
-            <div class="answer-text">${escapeHtml(answer)}</div>
+            <div class="answer-text">${formatAnswerText(answer)}</div>
           </section>
           ${informationGuidance(result)}
           <div class="primary-actions">
@@ -435,7 +448,8 @@
     if (regenerate) return submitQuestion(regenerate.closest("[data-question]").dataset.question);
     const copy = event.target.closest(".copy-action");
     if (copy) {
-      const text = copy.closest(".msg-body").querySelector(".answer-text").textContent;
+      const lines = copy.closest(".msg-body").querySelector(".answer-text").querySelectorAll("p");
+      const text = [...lines].map((line) => line.textContent).join("\n");
       await navigator.clipboard.writeText(text);
       copy.textContent = "복사됨";
       return;
