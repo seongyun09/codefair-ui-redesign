@@ -95,9 +95,9 @@
     `).join("");
   }
 
-  function resetConversation() {
+  function resetConversation({ skipSave = false } = {}) {
     if (controller) controller.abort();
-    saveCurrentSession();
+    if (!skipSave) saveCurrentSession();
     currentSessionId = crypto.randomUUID();
     conversationHistory.splice(0);
     messages.innerHTML = "";
@@ -468,7 +468,7 @@
       event.stopPropagation();
       const id = deleteButton.dataset.deleteSession;
       sessions.delete(id);
-      if (id === currentSessionId) resetConversation();
+      if (id === currentSessionId) resetConversation({ skipSave: true });
       else renderChatList();
       return;
     }
