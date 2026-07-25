@@ -319,6 +319,7 @@
         </div>
       </article>
     `);
+    closeSidebar();
     scrollToLatest();
     saveCurrentSession();
   }
@@ -407,6 +408,7 @@
   function closeSidebar() {
     sidebar.classList.remove("open");
     sidebarBackdrop.classList.remove("show");
+    sidebar.classList.add("collapsed");
   }
 
   function toggleSidebarCollapse() {
@@ -486,6 +488,7 @@
   $("#newChatBtn").addEventListener("click", resetConversation);
   $("#sidebarOpen").addEventListener("click", () => {
     sidebar.classList.add("open");
+    sidebar.classList.remove("collapsed");
     sidebarBackdrop.classList.add("show");
   });
   $("#sidebarClose").addEventListener("click", closeSidebar);
