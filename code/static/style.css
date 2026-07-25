@@ -168,6 +168,14 @@ button {
   font-size: 14px;
   color: var(--text-2);
 }
+.new-chat-btn .ic-plus {
+  display: grid;
+  place-items: center;
+  width: 14px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-2);
+}
 
 .new-chat-btn:hover { background: var(--surface-2); }
 
@@ -196,6 +204,7 @@ button {
   gap: 6px;
   padding: 8px 9px;
   border-radius: 9px;
+  border-bottom: 1px solid var(--border);
   font-size: 13.5px;
   font-weight: 430;
   color: var(--text);
@@ -204,6 +213,7 @@ button {
   text-align: left;
 }
 
+.chat-item:last-child { border-bottom: none; }
 .chat-item:hover { background: var(--surface-2); }
 
 .chat-item.active {
