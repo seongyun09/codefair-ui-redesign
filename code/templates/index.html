@@ -13,12 +13,12 @@
   <div class="app">
     <aside class="sidebar" id="sidebar" aria-label="대화 목록">
       <div class="sidebar-head">
-        <span class="spark" aria-hidden="true">
+        <button class="spark" id="sidebarCollapse" aria-label="사이드바 닫기">
           <svg viewBox="0 0 24 24">
             <circle class="spark-a" cx="9" cy="12" r="7"/>
             <circle class="spark-b" cx="15" cy="12" r="7"/>
           </svg>
-        </span>
+        </button>
         <button class="icon-btn mobile-only" id="sidebarClose" aria-label="대화 목록 닫기">✕</button>
       </div>
       <button class="new-chat-btn" id="newChatBtn"><span class="ic-pencil" aria-hidden="true">✎</span> 새 대화<span class="ic-plus" aria-hidden="true">+</span></button>
@@ -31,12 +31,12 @@
     <header class="topbar insurance-topbar">
       <div class="brand">
         <button class="icon-btn mobile-only" id="sidebarOpen" aria-label="대화 목록 열기">☰</button>
-        <span class="spark" aria-hidden="true">
+        <button class="spark" id="sidebarExpand" aria-label="사이드바 열기/닫기">
           <svg viewBox="0 0 24 24">
             <circle class="spark-a" cx="9" cy="12" r="7"/>
             <circle class="spark-b" cx="15" cy="12" r="7"/>
           </svg>
-        </span>
+        </button>
         <span class="brand-name">C.V</span>
       </div>
       <div class="topbar-actions">

@@ -409,6 +409,10 @@
     sidebarBackdrop.classList.remove("show");
   }
 
+  function toggleSidebarCollapse() {
+    sidebar.classList.toggle("collapsed");
+  }
+
   composer.addEventListener("submit", (event) => {
     event.preventDefault();
     if (controller) {
@@ -486,6 +490,8 @@
   });
   $("#sidebarClose").addEventListener("click", closeSidebar);
   sidebarBackdrop.addEventListener("click", closeSidebar);
+  $("#sidebarCollapse").addEventListener("click", toggleSidebarCollapse);
+  $("#sidebarExpand").addEventListener("click", toggleSidebarCollapse);
   $("#sourceDrawerClose").addEventListener("click", () => {
     sourceDrawer.classList.remove("open");
     sourceDrawer.setAttribute("aria-hidden", "true");
